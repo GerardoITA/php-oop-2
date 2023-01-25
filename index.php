@@ -13,7 +13,12 @@ class Product
         $this->name = $name;
         $this->perishable = $perishable;
         $this->price = $price;
-        $this->category = $category;
+        if ($category != "Food" && $category != "Shelter" && $category != "Toy" && $category != "Utility") {
+            $this->category = NULL;
+        } else {
+            $this->category = $category;
+        }
+        
     }
 
     public function getProductName()
@@ -32,7 +37,14 @@ class DogProduct extends Product
     {
 
         parent::__construct($name, $perishable, $price, $category);
-        $this->dog = $dog;
+
+        if ($dog != "small" && $dog != "medium" && $dog != "big") {
+            $this->dog = NULL;
+        }
+        else {
+            $this->dog = $dog;
+        }
+        
 
     }
 }
@@ -53,8 +65,15 @@ echo "<h1>";
 
 $cat1 = new CatProduct("CiboPerGattiNormali", true, "20", "Food", false);
 $cat2 = new CatProduct("CiboPerGattiSterilizzati", true, "22", "Food", true);
+$dog1 = new DogProduct("CucciaPerCaniPiccoli", false, "40", "Shelter", "small");
+$dog2 = new DogProduct("CiboPerCaniGrandi", true, "25", "Food", "big");
 var_dump($cat1);
 echo "<br><br>";
 var_dump($cat2);
+
+echo "</h1>";
+var_dump($dog1);
+echo "<br><br>";
+var_dump($dog2);
 
 echo "</h1>";
